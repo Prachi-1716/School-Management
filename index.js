@@ -1,4 +1,4 @@
-const haversineDistance = require("./calculateDist.js");
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -7,12 +7,16 @@ const { v4: uuidv4 } = require('uuid');
 const PORT = process.env.PORT || 3000;
 
 // Create the connection to database
+
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'schools',
-    password: 'Prachi@1716'
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    database: process.env.DB_NAME || 'schools',
+    password: process.env.DB_PASSWORD || '',
+    port: process.env.DB_PORT || 3306,
+    connectTimeout: 10000 // Optional but helps with remote DB
 });
+
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
