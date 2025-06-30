@@ -4,6 +4,7 @@ const app = express();
 const path = require("path");
 const mysql = require('mysql2');
 const { v4: uuidv4 } = require('uuid');
+const PORT = process.env.PORT || 3000;
 
 // Create the connection to database
 const connection = mysql.createConnection({
@@ -19,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("listing from port 3000");
 });
 
