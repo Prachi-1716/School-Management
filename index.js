@@ -8,14 +8,44 @@ const PORT = process.env.PORT || 3000;
 
 // Create the connection to database
 
-const connection = mysql.createConnection({
+require('dotenv').config();
+const mysql = require('mysql2');
+
+let connection;
+
+function handleDisconnect() {
+  connection = mysql.createConnection({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
-    database: process.env.DB_NAME || 'schools',
     password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'schools',
     port: process.env.DB_PORT || 3306,
-    connectTimeout: 10000 // Optional but helps with remote DB
-});
+    connectTimeout: 10000
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      console.error('❌ Error connecting to DB:', err.message);
+      setTimeout(handleDisconnect, 5000); // Retry after 5 sec
+    } else {
+      console.log('✅ Connected to MySQL database');
+    }
+  });
+
+  connection.on('error', (err) => {
+    console.error('❗ DB error', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST' || err.code === 'ECONNRESET' || err.fatal) {
+      handleDisconnect(); // Reconnect on disconnect
+    } else {
+      throw err;
+    }
+  });
+}
+
+handleDisconnect();
+
+module.exports = connection;
+
 
 
 app.set("view engine", "ejs");
