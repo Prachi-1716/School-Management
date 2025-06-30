@@ -8,9 +8,6 @@ const PORT = process.env.PORT || 3000;
 
 // Create the connection to database
 
-require('dotenv').config();
-const mysql = require('mysql2');
-
 let connection;
 
 function handleDisconnect() {
