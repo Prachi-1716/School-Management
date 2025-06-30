@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>school Details</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h2>Schools</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>School Name</th>
+                <th>Address</th>
+                <th>Lattitude</th>
+                <th>Longitude</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% for(let school of schools){ %>
+                <tr>
+                    <td><%= school.name %></td>
+                    <td><%= school.address %></td>
+                    <td><%= school.latitude %></td>
+                    <td><%= school.longitude %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    
+</body>
+
+</html>

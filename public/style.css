@@ -1,0 +1,66 @@
+body {
+  background: linear-gradient(90deg, #c2e9fb, #f9f9f9);
+  text-align: center;
+}
+/* home */
+.homebtn{
+  height: 2rem;
+  border: none;
+  background-color: rgb(167, 215, 241);
+  box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 550;
+  margin: 0 1rem;
+}
+
+/* new.ejs */
+form{
+  width: 20rem;
+  height: 25rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.ip{
+  display: flex;
+  justify-content: space-between;
+}
+input{
+  height: 2rem;
+  width: 15rem;
+  padding: 0.2rem;
+  border: none;
+  box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.3);
+}
+input:focus {
+  outline: none;
+  border: none; /* optional – only if you're using custom borders */
+}
+
+#address{
+  height: 4rem;
+}
+
+.submit{
+  height: 2rem;
+  width: 4rem;
+  border: none;
+  background-color: rgb(167, 215, 241);
+  box-shadow: 5px 5px 4px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 550;
+  font-size: 0.9rem;
+}
+
+/*schools.ejs */
+table{
+  border-collapse: collapse; 
+  margin: auto;
+  width: 100%;
+}
+table, td, th{
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+td{
+  margin: 5rem 0;
+}
